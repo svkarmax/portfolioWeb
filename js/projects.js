@@ -5,7 +5,8 @@ const projects = [
     category: 'Web Development',
     tags: ['HTML', 'CSS', 'JavaScript'],
     description: 'Generate QR codes instantly from any URL or text with one-click PNG download.',
-    image: '../images/qr-generator.svg',
+    image: null,
+    placeholder: '🔳',
     link: 'https://github.com/svkarmax/qr-generator',
     github: 'https://github.com/svkarmax/qr-generator',
     featured: true
@@ -16,7 +17,8 @@ const projects = [
     category: 'Android',
     tags: ['Java', 'Android', 'SQLite'],
     description: 'Never miss a dose with scheduled reminders and tracking.',
-    image: '../images/medicine-reminder.svg',
+    image: null,
+    placeholder: '💊',
     link: '#',
     github: '#',
     featured: true
@@ -27,7 +29,8 @@ const projects = [
     category: 'Java',
     tags: ['Java', 'MySQL', 'JSP'],
     description: 'Complete school ERP with attendance, exams and fee management.',
-    image: '../images/school-management.svg',
+    image: null,
+    placeholder: '🏫',
     link: '#',
     github: '#',
     featured: true
@@ -38,7 +41,8 @@ const projects = [
     category: 'Windchill',
     tags: ['Java', 'Windchill', 'PLM'],
     description: 'Custom workflows and UI modifications for Windchill PLM system.',
-    image: '../images/windchill.svg',
+    image: null,
+    placeholder: '⚙️',
     link: '#',
     github: '#',
     featured: false
@@ -49,7 +53,8 @@ const projects = [
     category: 'Web Development',
     tags: ['HTML', 'CSS', 'JavaScript'],
     description: 'Personal portfolio website with dark theme and responsive design.',
-    image: '../images/portfolio.svg',
+    image: null,
+    placeholder: '🌐',
     link: 'https://github.com/svkarmax/portfolio',
     github: 'https://github.com/svkarmax/portfolio',
     featured: false
@@ -60,7 +65,8 @@ const projects = [
     category: 'Web Development',
     tags: ['JavaScript', 'API', 'CSS'],
     description: 'Real-time weather application using OpenWeatherMap API.',
-    image: '../images/weather.svg',
+    image: null,
+    placeholder: '🌤️',
     link: '#',
     github: '#',
     featured: false
@@ -71,7 +77,8 @@ const projects = [
     category: 'Android',
     tags: ['Java', 'Android', 'Room DB'],
     description: 'Task management app with reminders and categories.',
-    image: '../images/task-manager.svg',
+    image: null,
+    placeholder: '✅',
     link: '#',
     github: '#',
     featured: false
@@ -82,7 +89,8 @@ const projects = [
     category: 'Java',
     tags: ['Spring Boot', 'JPA', 'MySQL'],
     description: 'RESTful API for e-commerce platform with JWT authentication.',
-    image: '../images/ecommerce.svg',
+    image: null,
+    placeholder: '🛒',
     link: '#',
     github: '#',
     featured: false

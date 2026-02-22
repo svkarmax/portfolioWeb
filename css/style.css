@@ -66,8 +66,8 @@ body {
 .navbar {
   background: var(--bg-header);
   padding: 20px 0;
-  position: sticky;
-  top: 0;
+  position: relative;  /* ← change from sticky */
+  /* remove or keep top: 0; doesn't matter now */
   z-index: 1000;
   box-shadow: 0 2px 10px var(--shadow-color);
   border-bottom: 1px solid var(--header-border);
@@ -142,19 +142,20 @@ body {
 
 /* Active link highlighting */
 .nav-links a.active {
-  color: var(--nav-link-hover);
-  font-weight: 600;
+    color: var(--nav-link-hover);
+    font-weight: 600;
+    position: relative;
 }
 
 .nav-links a.active::after {
-  content: '';
-  position: absolute;
-  bottom: -5px;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background: var(--nav-link-hover);
-  animation: slideIn 0.3s ease;
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--nav-link-hover);
+    animation: slideIn 0.3s ease;
 }
 
 @keyframes slideIn {
@@ -748,22 +749,7 @@ section p {
    }
  }
  /* Navigation Active Link Styles */
- .nav-links a.active {
-     color: var(--primary-color, #007bff);
-     font-weight: 600;
-     position: relative;
- }
 
- .nav-links a.active::after {
-     content: '';
-     position: absolute;
-     bottom: -5px;
-     left: 0;
-     width: 100%;
-     height: 2px;
-     background-color: var(--primary-color, #007bff);
-     animation: slideIn 0.3s ease;
- }
 
  @keyframes slideIn {
      from { width: 0; }
@@ -2321,5 +2307,103 @@ section p {
     .load-more-btn {
         width: 100%;
         justify-content: center;
+    }
+}
+/* Fix for footer */
+.footer .nav-links {
+    display: none;  /* Footer ke andar koi nav links nahi hone chahiye */
+}
+
+.footer .nav-social {
+    display: none;  /* Footer ke andar koi social links nahi */
+}
+
+/* Ensure footer only has footer content */
+.footer * {
+    box-sizing: border-box;
+}
+
+.footer-bottom {
+    clear: both;
+    width: 100%;
+}
+/* ====================================
+   MOBILE HAMBURGER MENU
+   ==================================== */
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 5px;
+}
+
+.hamburger span {
+    display: block;
+    width: 25px;
+    height: 2px;
+    background: var(--nav-social-color);
+    transition: all 0.3s ease;
+    border-radius: 2px;
+}
+
+/* Hamburger animation when open */
+.hamburger.open span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+.hamburger.open span:nth-child(2) {
+    opacity: 0;
+}
+.hamburger.open span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+@media (max-width: 768px) {
+    .hamburger {
+        display: flex;
+    }
+
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: var(--bg-header);
+        flex-direction: column;
+        align-items: center;
+        padding: 20px 0;
+        gap: 5px;
+        border-top: 1px solid var(--header-border);
+        z-index: 999;
+    }
+
+    .nav-links.open {
+        display: flex;
+    }
+
+    .nav-links a {
+        margin: 0;
+        padding: 12px 0;
+        width: 100%;
+        text-align: center;
+        font-size: 16px;
+    }
+
+    .nav-social {
+        gap: 12px;
+    }
+
+    /* Hide social icons on mobile, keep only theme toggle */
+    .nav-social a {
+        display: none;
+    }
+
+    .nav-container {
+        flex-direction: row;
+        position: relative;
     }
 }

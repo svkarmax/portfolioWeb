@@ -31,23 +31,22 @@ function generateCard(project, basePath = '') {
   `;
 }
 
-// Theme Toggle Functionality
+// ====================================
+// THEME TOGGLE
+// ====================================
 const themeToggle = document.getElementById('theme-toggle');
 if (themeToggle) {
   const body = document.body;
   const themeIcon = themeToggle.querySelector('i');
 
-  // Check for saved theme preference or default to light mode
   const currentTheme = localStorage.getItem('theme') || 'light';
 
-  // Apply saved theme on page load
   if (currentTheme === 'dark') {
     body.classList.add('dark-theme');
     themeIcon.classList.remove('fa-moon');
     themeIcon.classList.add('fa-sun');
   }
 
-  // Toggle theme on button click
   themeToggle.addEventListener('click', () => {
     body.classList.toggle('dark-theme');
 
@@ -64,53 +63,33 @@ if (themeToggle) {
 }
 
 // ====================================
-// NAVIGATION CODE
+// NAVIGATION
 // ====================================
 
-// Get current page function
-function getCurrentPage() {
-    const path = window.location.pathname;
-    if (path.endsWith('/')) {
-        const folderName = path.split('/').filter(p => p).pop() || 'index';
-        return folderName + '/';
-    }
-    return path.split('/').pop() || 'index.html';
-}
-
-// Active link highlight
+// Active link highlight using full pathname
 function highlightActiveLink() {
-    const currentPage = getCurrentPage();
+    const path = window.location.pathname.toLowerCase();
     const navLinks = document.querySelectorAll('.nav-links a');
 
     navLinks.forEach(link => {
-        const linkHref = link.getAttribute('href');
         link.classList.remove('active');
+        const href = link.getAttribute('href').toLowerCase();
 
-        if (currentPage === 'index.html' || currentPage === '' || currentPage === '/') {
-            if (linkHref === './' || linkHref === '/' || linkHref === '../' || linkHref === '') {
-                link.classList.add('active');
-            }
-        }
-
-        if (currentPage.includes('about') && linkHref.includes('about')) {
+        if (path.includes('/about/') && href.includes('about')) {
             link.classList.add('active');
-        }
-        if (currentPage.includes('skills') && linkHref.includes('skills')) {
+        } else if (path.includes('/skills/') && href.includes('skills')) {
             link.classList.add('active');
-        }
-        if (currentPage.includes('portfolio') && linkHref.includes('portfolio')) {
+        } else if (path.includes('/portfolio/') && href.includes('portfolio')) {
             link.classList.add('active');
-        }
-        if (currentPage.includes('blog') && linkHref.includes('blog')) {
+        } else if (path.includes('/blog/') && href.includes('blog')) {
             link.classList.add('active');
-        }
-        if (currentPage.includes('contact') && linkHref.includes('contact')) {
+        } else if (path.includes('/contact/') && href.includes('contact')) {
             link.classList.add('active');
         }
     });
 }
 
-// Handle link clicks
+// Handle nav link clicks
 function setupNavigation() {
     const navLinks = document.querySelectorAll('.nav-links a');
 
@@ -131,58 +110,62 @@ function setupNavigation() {
                 e.preventDefault();
                 window.open(href, '_blank');
             }
-            // .html links - browser handle karega
+            // .html links - browser handles naturally
         });
     });
 }
 
-// Logo click handler
+// Logo click - navigate to href directly
 function setupLogoClick() {
     const logoLink = document.querySelector('.logo-link');
     if (logoLink) {
         logoLink.addEventListener('click', function(e) {
             e.preventDefault();
+            const href = this.getAttribute('href');
 
-            const currentPage = getCurrentPage();
-
-            if (currentPage === 'index.html' || currentPage === '') {
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
-                });
+            if (href && href !== '#') {
+                window.location.href = href;
             } else {
-                window.location.href = 'index.html';
+                window.scrollTo({ top: 0, behavior: 'smooth' });
             }
         });
     }
 }
 
-// Handle anchor on load
+// Handle anchor hash on page load (index.html only)
 function handleAnchorOnLoad() {
-    const currentPage = getCurrentPage();
+    const path = window.location.pathname.toLowerCase();
+    const isHome = path.endsWith('index.html') &&
+                   !path.includes('/about/') &&
+                   !path.includes('/skills/') &&
+                   !path.includes('/portfolio/') &&
+                   !path.includes('/blog/') &&
+                   !path.includes('/contact/');
 
-    if (currentPage === 'index.html' || currentPage === '') {
+    if (isHome) {
         const hash = window.location.hash;
-
         if (hash) {
             setTimeout(() => {
                 const targetSection = document.querySelector(hash);
                 if (targetSection) {
-                    targetSection.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
+                    targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }
             }, 100);
         }
     }
 }
 
-// Scroll highlight
+// Scroll-based section highlight (index.html only)
 function setupScrollHighlight() {
-    const currentPage = getCurrentPage();
+    const path = window.location.pathname.toLowerCase();
+    const isHome = path.endsWith('index.html') &&
+                   !path.includes('/about/') &&
+                   !path.includes('/skills/') &&
+                   !path.includes('/portfolio/') &&
+                   !path.includes('/blog/') &&
+                   !path.includes('/contact/');
 
-    if (currentPage === 'index.html' || currentPage === '') {
+    if (isHome) {
         const sections = document.querySelectorAll('section[id]');
 
         function highlightSection() {
@@ -207,71 +190,66 @@ function setupScrollHighlight() {
     }
 }
 
-// Scroll to top button
+// ====================================
+// SCROLL TO TOP BUTTON
+// ====================================
 const scrollTopBtn = document.getElementById('scrollTopBtn');
 if (scrollTopBtn) {
-  window.addEventListener('scroll', () => {
-    const scrolled = window.pageYOffset;
-    const totalHeight = document.body.scrollHeight;
-    const windowHeight = window.innerHeight;
+    window.addEventListener('scroll', () => {
+        const scrolled = window.pageYOffset;
+        const totalHeight = document.body.scrollHeight;
+        const windowHeight = window.innerHeight;
 
-    if (scrolled + windowHeight >= totalHeight - 400) {
-      scrollTopBtn.classList.add('visible');
-    } else {
-      scrollTopBtn.classList.remove('visible');
-    }
-  });
-
-  scrollTopBtn.addEventListener('click', () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
+        if (scrolled + windowHeight >= totalHeight - 400) {
+            scrollTopBtn.classList.add('visible');
+        } else {
+            scrollTopBtn.classList.remove('visible');
+        }
     });
-  });
+
+    scrollTopBtn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
 }
 
 // ====================================
-// INITIALIZE EVERYTHING
+// INITIALIZE
 // ====================================
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('DOM loaded, initializing...');
-
-    // Check if projects exists
-    if (typeof projects === 'undefined') {
-        console.error('projects.js not loaded!');
-        return;
-    }
 
     // Load featured cards on index.html ONLY
     const featuredGrid = document.getElementById('featured-grid');
-    if (featuredGrid) {
-        console.log('Loading featured projects...');
+    if (featuredGrid && typeof projects !== 'undefined') {
         const featured = projects.filter(p => p.featured).slice(0, 3);
         featuredGrid.innerHTML = featured.map(p => generateCard(p)).join('');
-        console.log('Featured projects loaded:', featured.length);
     }
 
-    // LOAD ALL CARDS ON PORTFOLIO.HTML - COMMENT OUT (portfolio page ka apna script hai)
-    /*
-    const portfolioGrid = document.getElementById('portfolio-grid');
-    if (portfolioGrid) {
-        console.log('Loading all projects...');
-        portfolioGrid.innerHTML = projects.map(p => generateCard(p, '../')).join('');
-        console.log('All projects loaded:', projects.length);
-    }
-    */
-
-    // Navigation functions
     highlightActiveLink();
     setupNavigation();
     setupLogoClick();
     handleAnchorOnLoad();
     setupScrollHighlight();
+    // Hamburger menu toggle
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.querySelector('.nav-links');
 
-    console.log('Initialization complete!');
+    if (hamburger && navLinks) {
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('open');
+            navLinks.classList.toggle('open');
+        });
+
+        // Close menu when a link is clicked
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('open');
+                navLinks.classList.remove('open');
+            });
+        });
+    }
 });
 
-// Back/forward buttons
+// Handle browser back/forward buttons
 window.addEventListener('popstate', function() {
     highlightActiveLink();
     handleAnchorOnLoad();

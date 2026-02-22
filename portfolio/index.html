@@ -3,12 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Portfolio | Shubham Vishwakarma</title>
-    <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
 
-<!-- Header -->
 <header class="navbar">
     <div class="nav-container">
         <div class="logo">
@@ -18,7 +17,6 @@
                 </div>
             </a>
         </div>
-
         <nav class="nav-links">
             <a href="../about/index.html">about</a>
             <a href="../skills/index.html">skills</a>
@@ -27,22 +25,37 @@
             <a href="../contact/index.html">contact</a>
         </nav>
 
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
         <div class="nav-social">
             <a href="https://github.com/svkarmax" target="_blank"><i class="fab fa-github"></i></a>
             <a href="https://linkedin.com/in/svkarmax" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://x.com/svkarmax" target="_blank"><i class="fab fa-x-twitter"></i></a>
             <a href="https://instagram.com/svkarmax" target="_blank"><i class="fab fa-instagram"></i></a>
-            <button id="theme-toggle"><i class="fas fa-moon"></i></button>
+            <button id="theme-toggle" class="theme-toggle"><i class="fas fa-moon"></i></button>
         </div>
     </div>
 </header>
 
-<!-- Portfolio Content -->
 <main class="portfolio-page">
     <div class="container">
         <div class="page-header">
             <h1>My Portfolio</h1>
             <div class="header-line"></div>
             <p class="header-subtitle">A collection of my recent projects and work</p>
+        </div>
+
+        <!-- Category Filters -->
+        <div class="portfolio-categories">
+            <button class="category-btn active" data-filter="all">All</button>
+            <button class="category-btn" data-filter="Web Development">Web Dev</button>
+            <button class="category-btn" data-filter="Android">Android</button>
+            <button class="category-btn" data-filter="Java">Java</button>
+            <button class="category-btn" data-filter="Windchill">Windchill</button>
         </div>
 
         <!-- Portfolio Grid -->
@@ -52,65 +65,85 @@
     </div>
 </main>
 
-<!-- Footer -->
+<!-- Scroll to Top Button -->
+<button id="scrollTopBtn" class="scroll-top-btn" aria-label="Scroll to top">
+    <i class="fas fa-chevron-up"></i>
+</button>
+
+
 <footer class="footer">
     <div class="footer-bottom">
-        <p>© 2026 Shubham Vishwakarma. All rights reserved.</p>
+        <div class="footer-bottom-container">
+            <p>© 2026 Shubham Vishwakarma. All rights reserved.</p>
+            <a href="https://mail.google.com/mail/?view=cm&to=svkarmax@gmail.com"
+               target="_blank" class="footer-mail-link">
+                <i class="fas fa-envelope"></i>
+                svkarmax@gmail.com
+            </a>
+        </div>
     </div>
 </footer>
 
-<!-- Scripts -->
 <script src="../js/projects.js"></script>
+<script src="../js/script.js"></script>
 <script>
-    // Portfolio page script
-    (function() {
-        console.log('Portfolio page loaded');
-        console.log('Projects available:', typeof projects !== 'undefined');
+    document.addEventListener('DOMContentLoaded', function () {
+
+        const grid = document.getElementById('portfolio-grid');
 
         if (typeof projects === 'undefined') {
-            document.getElementById('portfolio-grid').innerHTML =
-                '<div class="error">Error: Projects data not loaded</div>';
+            grid.innerHTML = '<p style="color:red">Error: projects.js not loaded</p>';
             return;
         }
 
-        console.log('Total projects:', projects.length);
+        function renderProjects(filter) {
+            const filtered = filter === 'all'
+                ? projects
+                : projects.filter(p => p.category === filter);
 
-        const grid = document.getElementById('portfolio-grid');
-        grid.innerHTML = ''; // Clear loading
-
-        projects.forEach(project => {
-            const card = document.createElement('div');
-            card.className = 'portfolio-card';
-
-            // Fix image path for portfolio page
-            const imagePath = project.image.startsWith('images/')
-                ? `../${project.image}`
-                : project.image;
-
-            card.innerHTML = `
-                <div class="portfolio-image">
-                    <img src="${imagePath}"
-                         alt="${project.title}"
-                         onerror="this.src='https://via.placeholder.com/400x300/333/fff?text=${project.title}'">
-                </div>
-                <div class="portfolio-info">
-                    <h3>${project.title}</h3>
-                    <p class="portfolio-category">${project.category}</p>
-                    <p class="portfolio-description">${project.description}</p>
-                    <div class="portfolio-tags">
-                        ${project.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+            grid.innerHTML = filtered.map(project => `
+                <div class="portfolio-card" data-category="${project.category}">
+                    <div class="portfolio-image">
+                        <img src="${project.image}"
+                             alt="${project.title}"
+                             onerror="this.parentElement.innerHTML='<div class=\\'work-placeholder\\'>${project.placeholder || '📁'}</div>'">
+                        <div class="portfolio-overlay">
+                            <div class="overlay-content">
+                                <h4>${project.title}</h4>
+                                <p>${project.category}</p>
+                                <div class="overlay-links">
+                                    ${project.link !== '#' ? `<a href="${project.link}" target="_blank" class="overlay-link"><i class="fas fa-external-link-alt"></i></a>` : ''}
+                                    ${project.github !== '#' ? `<a href="${project.gitHub}" target="_blank" class="overlay-link"><i class="fab fa-github"></i></a>` : ''}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>${project.title}</h3>
+                        <p class="portfolio-category-tag">${project.category}</p>
+                        <p class="portfolio-description">${project.description}</p>
+                        <div class="portfolio-tags">
+                            ${project.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+                        </div>
                     </div>
                 </div>
-            `;
-            grid.appendChild(card);
+            `).join('');
+        }
+
+        // Initial render
+        renderProjects('all');
+
+        // Filter buttons
+        document.querySelectorAll('.portfolio-categories .category-btn').forEach(btn => {
+            btn.addEventListener('click', function () {
+                document.querySelectorAll('.portfolio-categories .category-btn')
+                    .forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                renderProjects(this.dataset.filter);
+            });
         });
-
-        console.log('Projects displayed:', projects.length);
-    })();
+    });
 </script>
-
-<!-- Theme toggle script -->
-<script src="../js/script.js"></script>
 
 </body>
 </html>
