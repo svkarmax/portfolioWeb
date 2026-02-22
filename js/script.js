@@ -1,22 +1,14 @@
 // ================================
 // AUTO GENERATE CARDS FROM DATA
 // ================================
-
 function generateCard(project, basePath = '') {
-  const imageSrc = project.image
-    ? `${basePath}${project.image}`
-    : null;
-
+  const imageSrc = project.image ? `${basePath}${project.image}` : null;
   return `
     <a href="${basePath}projects/${project.id}.html" class="work-card">
       <div class="work-image">
-        ${imageSrc
-          ? `<img src="${imageSrc}" alt="${project.title}"
-                  onerror="this.style.display='none';
-                  this.nextElementSibling.style.display='flex'">`
-          : ''}
-        <div class="work-placeholder"
-             style="${imageSrc ? 'display:none' : ''}">
+        ${imageSrc ? `<img src="${imageSrc}" alt="${project.title}"
+                onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">` : ''}
+        <div class="work-placeholder" style="${imageSrc ? 'display:none' : ''}">
           ${project.placeholder || '📁'}
         </div>
       </div>
@@ -38,18 +30,14 @@ const themeToggle = document.getElementById('theme-toggle');
 if (themeToggle) {
   const body = document.body;
   const themeIcon = themeToggle.querySelector('i');
-
   const currentTheme = localStorage.getItem('theme') || 'light';
-
   if (currentTheme === 'dark') {
     body.classList.add('dark-theme');
     themeIcon.classList.remove('fa-moon');
     themeIcon.classList.add('fa-sun');
   }
-
   themeToggle.addEventListener('click', () => {
     body.classList.toggle('dark-theme');
-
     if (body.classList.contains('dark-theme')) {
       themeIcon.classList.remove('fa-moon');
       themeIcon.classList.add('fa-sun');
@@ -63,131 +51,114 @@ if (themeToggle) {
 }
 
 // ====================================
+// HAMBURGER MENU
+// — runs immediately, no DOMContentLoaded needed
+// ====================================
+function setupHamburger() {
+  const hamburger = document.getElementById('hamburger');
+  const navLinksMenu = document.querySelector('.nav-links');
+  if (!hamburger || !navLinksMenu) return;
+
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    navLinksMenu.classList.toggle('open');
+  });
+
+  navLinksMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      hamburger.classList.remove('open');
+      navLinksMenu.classList.remove('open');
+    });
+  });
+}
+
+// ====================================
 // NAVIGATION
 // ====================================
-
-// Active link highlight using full pathname
 function highlightActiveLink() {
-    const path = window.location.pathname.toLowerCase();
-    const navLinks = document.querySelectorAll('.nav-links a');
-
-    navLinks.forEach(link => {
-        link.classList.remove('active');
-        const href = link.getAttribute('href').toLowerCase();
-
-        if (path.includes('/about/') && href.includes('about')) {
-            link.classList.add('active');
-        } else if (path.includes('/skills/') && href.includes('skills')) {
-            link.classList.add('active');
-        } else if (path.includes('/portfolio/') && href.includes('portfolio')) {
-            link.classList.add('active');
-        } else if (path.includes('/blog/') && href.includes('blog')) {
-            link.classList.add('active');
-        } else if (path.includes('/contact/') && href.includes('contact')) {
-            link.classList.add('active');
-        }
-    });
+  const path = window.location.pathname.toLowerCase();
+  const navLinks = document.querySelectorAll('.nav-links a');
+  navLinks.forEach(link => {
+    link.classList.remove('active');
+    const href = link.getAttribute('href').toLowerCase();
+    if (path.includes('/about/') && href.includes('about')) link.classList.add('active');
+    else if (path.includes('/skills/') && href.includes('skills')) link.classList.add('active');
+    else if (path.includes('/portfolio/') && href.includes('portfolio')) link.classList.add('active');
+    else if (path.includes('/blog/') && href.includes('blog')) link.classList.add('active');
+    else if (path.includes('/contact/') && href.includes('contact')) link.classList.add('active');
+  });
 }
 
-// Handle nav link clicks
 function setupNavigation() {
-    const navLinks = document.querySelectorAll('.nav-links a');
-
-    navLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
-            const href = this.getAttribute('href');
-
-            if (href.startsWith('#')) {
-                e.preventDefault();
-                const targetSection = document.querySelector(href);
-                if (targetSection) {
-                    targetSection.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            } else if (href.startsWith('http')) {
-                e.preventDefault();
-                window.open(href, '_blank');
-            }
-            // .html links - browser handles naturally
-        });
+  const navLinks = document.querySelectorAll('.nav-links a');
+  navLinks.forEach(link => {
+    link.addEventListener('click', function(e) {
+      const href = this.getAttribute('href');
+      if (href.startsWith('#')) {
+        e.preventDefault();
+        const target = document.querySelector(href);
+        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      } else if (href.startsWith('http')) {
+        e.preventDefault();
+        window.open(href, '_blank');
+      }
     });
+  });
 }
 
-// Logo click - navigate to href directly
 function setupLogoClick() {
-    const logoLink = document.querySelector('.logo-link');
-    if (logoLink) {
-        logoLink.addEventListener('click', function(e) {
-            e.preventDefault();
-            const href = this.getAttribute('href');
-
-            if (href && href !== '#') {
-                window.location.href = href;
-            } else {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            }
-        });
-    }
+  const logoLink = document.querySelector('.logo-link');
+  if (logoLink) {
+    logoLink.addEventListener('click', function(e) {
+      e.preventDefault();
+      const href = this.getAttribute('href');
+      if (href && href !== '#') {
+        window.location.href = href;
+      } else {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    });
+  }
 }
 
-// Handle anchor hash on page load (index.html only)
 function handleAnchorOnLoad() {
-    const path = window.location.pathname.toLowerCase();
-    const isHome = path.endsWith('index.html') &&
-                   !path.includes('/about/') &&
-                   !path.includes('/skills/') &&
-                   !path.includes('/portfolio/') &&
-                   !path.includes('/blog/') &&
-                   !path.includes('/contact/');
-
-    if (isHome) {
-        const hash = window.location.hash;
-        if (hash) {
-            setTimeout(() => {
-                const targetSection = document.querySelector(hash);
-                if (targetSection) {
-                    targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-            }, 100);
-        }
-    }
+  const path = window.location.pathname.toLowerCase();
+  const isHome = path.endsWith('index.html') &&
+    !path.includes('/about/') && !path.includes('/skills/') &&
+    !path.includes('/portfolio/') && !path.includes('/blog/') &&
+    !path.includes('/contact/');
+  if (isHome && window.location.hash) {
+    setTimeout(() => {
+      const target = document.querySelector(window.location.hash);
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 100);
+  }
 }
 
-// Scroll-based section highlight (index.html only)
 function setupScrollHighlight() {
-    const path = window.location.pathname.toLowerCase();
-    const isHome = path.endsWith('index.html') &&
-                   !path.includes('/about/') &&
-                   !path.includes('/skills/') &&
-                   !path.includes('/portfolio/') &&
-                   !path.includes('/blog/') &&
-                   !path.includes('/contact/');
+  const path = window.location.pathname.toLowerCase();
+  const isHome = path.endsWith('index.html') &&
+    !path.includes('/about/') && !path.includes('/skills/') &&
+    !path.includes('/portfolio/') && !path.includes('/blog/') &&
+    !path.includes('/contact/');
+  if (!isHome) return;
 
-    if (isHome) {
-        const sections = document.querySelectorAll('section[id]');
-
-        function highlightSection() {
-            const scrollY = window.pageYOffset;
-
-            sections.forEach(section => {
-                const sectionHeight = section.offsetHeight;
-                const sectionTop = section.offsetTop - 100;
-                const sectionId = section.getAttribute('id');
-                const navLink = document.querySelector(`.nav-links a[href="#${sectionId}"]`);
-
-                if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-                    navLink?.classList.add('active');
-                } else {
-                    navLink?.classList.remove('active');
-                }
-            });
-        }
-
-        window.addEventListener('scroll', highlightSection);
-        highlightSection();
-    }
+  const sections = document.querySelectorAll('section[id]');
+  function highlightSection() {
+    const scrollY = window.pageYOffset;
+    sections.forEach(section => {
+      const top = section.offsetTop - 100;
+      const id = section.getAttribute('id');
+      const link = document.querySelector(`.nav-links a[href="#${id}"]`);
+      if (scrollY > top && scrollY <= top + section.offsetHeight) {
+        link?.classList.add('active');
+      } else {
+        link?.classList.remove('active');
+      }
+    });
+  }
+  window.addEventListener('scroll', highlightSection);
+  highlightSection();
 }
 
 // ====================================
@@ -195,62 +166,39 @@ function setupScrollHighlight() {
 // ====================================
 const scrollTopBtn = document.getElementById('scrollTopBtn');
 if (scrollTopBtn) {
-    window.addEventListener('scroll', () => {
-        const scrolled = window.pageYOffset;
-        const totalHeight = document.body.scrollHeight;
-        const windowHeight = window.innerHeight;
-
-        if (scrolled + windowHeight >= totalHeight - 400) {
-            scrollTopBtn.classList.add('visible');
-        } else {
-            scrollTopBtn.classList.remove('visible');
-        }
-    });
-
-    scrollTopBtn.addEventListener('click', () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
+  window.addEventListener('scroll', () => {
+    const scrolled = window.pageYOffset;
+    if (scrolled + window.innerHeight >= document.body.scrollHeight - 400) {
+      scrollTopBtn.classList.add('visible');
+    } else {
+      scrollTopBtn.classList.remove('visible');
+    }
+  });
+  scrollTopBtn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
 }
 
 // ====================================
 // INITIALIZE
 // ====================================
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
+  // Featured cards on home page
+  const featuredGrid = document.getElementById('featured-grid');
+  if (featuredGrid && typeof projects !== 'undefined') {
+    const featured = projects.filter(p => p.featured).slice(0, 3);
+    featuredGrid.innerHTML = featured.map(p => generateCard(p)).join('');
+  }
 
-    // Load featured cards on index.html ONLY
-    const featuredGrid = document.getElementById('featured-grid');
-    if (featuredGrid && typeof projects !== 'undefined') {
-        const featured = projects.filter(p => p.featured).slice(0, 3);
-        featuredGrid.innerHTML = featured.map(p => generateCard(p)).join('');
-    }
-
-    highlightActiveLink();
-    setupNavigation();
-    setupLogoClick();
-    handleAnchorOnLoad();
-    setupScrollHighlight();
-    // Hamburger menu toggle
-    const hamburger = document.getElementById('hamburger');
-    const navLinks = document.querySelector('.nav-links');
-
-    if (hamburger && navLinks) {
-        hamburger.addEventListener('click', () => {
-            hamburger.classList.toggle('open');
-            navLinks.classList.toggle('open');
-        });
-
-        // Close menu when a link is clicked
-        navLinks.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                hamburger.classList.remove('open');
-                navLinks.classList.remove('open');
-            });
-        });
-    }
+  highlightActiveLink();
+  setupNavigation();
+  setupLogoClick();
+  setupHamburger();       // ← called here reliably
+  handleAnchorOnLoad();
+  setupScrollHighlight();
 });
 
-// Handle browser back/forward buttons
-window.addEventListener('popstate', function() {
-    highlightActiveLink();
-    handleAnchorOnLoad();
+window.addEventListener('popstate', function () {
+  highlightActiveLink();
+  handleAnchorOnLoad();
 });
