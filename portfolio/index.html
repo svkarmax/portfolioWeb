@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Portfolio | Shubham Vishwakarma</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+<!-- Header -->
+<header class="navbar">
+    <div class="nav-container">
+        <div class="logo">
+            <a href="../index.html" class="logo-link">
+                <div class="logo-circular">
+                    <div class="initials">SV</div>
+                </div>
+            </a>
+        </div>
+
+        <nav class="nav-links">
+            <a href="../about/index.html">about</a>
+            <a href="../skills/index.html">skills</a>
+            <a href="../portfolio/index.html">portfolio</a>
+            <a href="../blog/index.html">blog</a>
+            <a href="../contact/index.html">contact</a>
+        </nav>
+
+        <div class="nav-social">
+            <a href="https://github.com/svkarmax" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="https://linkedin.com/in/svkarmax" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://instagram.com/svkarmax" target="_blank"><i class="fab fa-instagram"></i></a>
+            <button id="theme-toggle"><i class="fas fa-moon"></i></button>
+        </div>
+    </div>
+</header>
+
+<!-- Portfolio Content -->
+<main class="portfolio-page">
+    <div class="container">
+        <div class="page-header">
+            <h1>My Portfolio</h1>
+            <div class="header-line"></div>
+            <p class="header-subtitle">A collection of my recent projects and work</p>
+        </div>
+
+        <!-- Portfolio Grid -->
+        <div class="portfolio-grid" id="portfolio-grid">
+            <div class="loading">Loading projects...</div>
+        </div>
+    </div>
+</main>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="footer-bottom">
+        <p>© 2026 Shubham Vishwakarma. All rights reserved.</p>
+    </div>
+</footer>
+
+<!-- Scripts -->
+<script src="../js/projects.js"></script>
+<script>
+    // Portfolio page script
+    (function() {
+        console.log('Portfolio page loaded');
+        console.log('Projects available:', typeof projects !== 'undefined');
+
+        if (typeof projects === 'undefined') {
+            document.getElementById('portfolio-grid').innerHTML =
+                '<div class="error">Error: Projects data not loaded</div>';
+            return;
+        }
+
+        console.log('Total projects:', projects.length);
+
+        const grid = document.getElementById('portfolio-grid');
+        grid.innerHTML = ''; // Clear loading
+
+        projects.forEach(project => {
+            const card = document.createElement('div');
+            card.className = 'portfolio-card';
+
+            // Fix image path for portfolio page
+            const imagePath = project.image.startsWith('images/')
+                ? `../${project.image}`
+                : project.image;
+
+            card.innerHTML = `
+                <div class="portfolio-image">
+                    <img src="${imagePath}"
+                         alt="${project.title}"
+                         onerror="this.src='https://via.placeholder.com/400x300/333/fff?text=${project.title}'">
+                </div>
+                <div class="portfolio-info">
+                    <h3>${project.title}</h3>
+                    <p class="portfolio-category">${project.category}</p>
+                    <p class="portfolio-description">${project.description}</p>
+                    <div class="portfolio-tags">
+                        ${project.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+                    </div>
+                </div>
+            `;
+            grid.appendChild(card);
+        });
+
+        console.log('Projects displayed:', projects.length);
+    })();
+</script>
+
+<!-- Theme toggle script -->
+<script src="../js/script.js"></script>
+
+</body>
+</html>

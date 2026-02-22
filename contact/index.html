@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | Shubham Vishwakarma</title>
+
+    <!-- SEO -->
+    <meta name="description" content="Get in touch with Shubham Vishwakarma - Software Engineer specializing in Java and Web Development">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="../svg/favicon.svg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<!-- HEADER (same as index.html) -->
+<header class="navbar">
+    <div class="nav-container">
+        <div class="logo">
+            <a href="index.html" class="index.html">
+                <div class="logo-circular">
+                    <div class="initials">SV</div>
+                </div>
+            </a>
+        </div>
+
+        <nav class="nav-links">
+            <a href="../about/index.html">about</a>
+            <a href="../skills/index.html">skills</a>
+            <a href="../portfolio/index.html">portfolio</a>
+            <a href="../blog/index.html">blog</a>
+            <a href="../contact/index.html">contact</a>
+        </nav>
+
+
+        <div class="nav-social">
+            <a href="https://github.com/svkarmax" target="_blank" aria-label="GitHub">
+                <i class="fab fa-github"></i>
+            </a>
+            <a href="https://linkedin.com/in/svkarmax" target="_blank" aria-label="LinkedIn">
+                <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="https://twitter.com/yourusername" target="_blank" aria-label="Twitter">
+                <i class="fab fa-x-twitter"></i>
+            </a>
+            <a href="https://instagram.com/svkarmax" target="_blank" aria-label="Instagram">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+    </div>
+</header>
+
+<!-- CONTACT PAGE CONTENT -->
+<main class="contact-page">
+    <div class="container">
+        <!-- Page Header -->
+        <div class="page-header">
+            <h1>Get In Touch</h1>
+            <div class="header-line"></div>
+            <p class="header-subtitle">Have a question or want to work together? I'd love to hear from you!</p>
+        </div>
+
+        <!-- Contact Content -->
+        <div class="contact-content">
+            <!-- Left Column - Contact Info -->
+            <div class="contact-info">
+                <h2>Let's Connect</h2>
+                <p class="contact-description">
+                    I'm currently available for freelance work and full-time opportunities.
+                    Feel free to reach out if you have any questions or just want to say hello!
+                </p>
+
+                <!-- Contact Methods -->
+                <div class="contact-methods">
+                    <!-- Email -->
+                    <div class="contact-method">
+                        <div class="method-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="method-details">
+                            <h3>Email</h3>
+                            <a href="mailto:svkarmax@gmail.com">svkarmax@gmail.com</a>
+                            <p>Response within 24 hours</p>
+                        </div>
+                    </div>
+
+                    <!-- Phone -->
+                    <div class="contact-method">
+                        <div class="method-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <div class="method-details">
+                            <h3>Phone</h3>
+                            <a href="tel:+919876543210">+91 98765 43210</a>
+                            <p>Monday to Friday, 9AM - 6PM</p>
+                        </div>
+                    </div>
+
+                    <!-- Location -->
+                    <div class="contact-method">
+                        <div class="method-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="method-details">
+                            <h3>Location</h3>
+                            <p>Mumbai, India</p>
+                            <p>Available for remote work worldwide</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Social Connect -->
+                <div class="social-connect">
+                    <h3>Connect on Social Media</h3>
+                    <div class="social-grid">
+                        <a href="https://github.com/svkarmax" target="_blank" class="social-item">
+                            <i class="fab fa-github"></i>
+                            <span>GitHub</span>
+                        </a>
+                        <a href="https://linkedin.com/in/svkarmax" target="_blank" class="social-item">
+                            <i class="fab fa-linkedin-in"></i>
+                            <span>LinkedIn</span>
+                        </a>
+                        <a href="https://twitter.com/yourusername" target="_blank" class="social-item">
+                            <i class="fab fa-x-twitter"></i>
+                            <span>Twitter</span>
+                        </a>
+                        <a href="https://instagram.com/svkarmax" target="_blank" class="social-item">
+                            <i class="fab fa-instagram"></i>
+                            <span>Instagram</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column - Contact Form -->
+            <div class="contact-form-container">
+                <h2>Send Me a Message</h2>
+                <form id="contactForm" class="contact-form">
+                    <!-- Name Field -->
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" name="name" placeholder="John Doe" required>
+                    </div>
+
+                    <!-- Email Field -->
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" placeholder="john@example.com" required>
+                    </div>
+
+                    <!-- Subject Field -->
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" name="subject" placeholder="Project Inquiry" required>
+                    </div>
+
+                    <!-- Message Field -->
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="6" placeholder="Tell me about your project..." required></textarea>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit" class="submit-btn">
+                        Send Message <i class="fas fa-paper-plane"></i>
+                    </button>
+                </form>
+
+                <!-- Form Status Message -->
+                <div id="formStatus" class="form-status"></div>
+            </div>
+        </div>
+
+        <!-- Map Section (Optional) -->
+        <div class="map-section">
+            <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d241317.11609823277!2d72.74109995!3d19.0821978!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c6306644edc1%3A0x5da4ed8f8d648c69!2sMumbai%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1645567890123!5m2!1sen!2sin"
+                    width="100%"
+                    height="300"
+                    style="border:0; border-radius: 15px;"
+                    allowfullscreen=""
+                    loading="lazy">
+            </iframe>
+        </div>
+    </div>
+</main>
+
+<!-- Scroll to Top Button -->
+<button id="scrollTopBtn" class="scroll-top-btn" aria-label="Scroll to top">
+    <i class="fas fa-chevron-up"></i>
+</button>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="footer-bottom">
+        <div class="footer-bottom-container">
+            <p>© 2026 Shubham Vishwakarma. All rights reserved.</p>
+            <a href="https://mail.google.com/mail/?view=cm&to=svkarmax@gmail.com"
+               target="_blank" class="footer-mail-link">
+                <i class="fas fa-envelope"></i>
+                svkarmax@gmail.com
+            </a>
+        </div>
+    </div>
+</footer>
+
+<!-- Scripts -->
+<script src="../js/projects.js"></script>
+<script src="../js/script.js"></script>
+<script>
+    // Contact Form Handling
+    document.addEventListener('DOMContentLoaded', function() {
+        const contactForm = document.getElementById('contactForm');
+        const formStatus = document.getElementById('formStatus');
+
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+
+                // Show sending status
+                formStatus.innerHTML = '<div class="status-message sending"><i class="fas fa-spinner fa-spin"></i> Sending message...</div>';
+                formStatus.style.display = 'block';
+
+                // Get form data
+                const formData = {
+                    name: document.getElementById('name').value,
+                    email: document.getElementById('email').value,
+                    subject: document.getElementById('subject').value,
+                    message: document.getElementById('message').value
+                };
+
+                // Simulate form submission (replace with actual API call)
+                setTimeout(() => {
+                    // Success message
+                    formStatus.innerHTML = '<div class="status-message success"><i class="fas fa-check-circle"></i> Message sent successfully! I\'ll get back to you soon.</div>';
+
+                    // Clear form
+                    contactForm.reset();
+
+                    // Hide status after 5 seconds
+                    setTimeout(() => {
+                        formStatus.style.display = 'none';
+                    }, 5000);
+                }, 1500);
+
+                // For actual form submission, use fetch API:
+                /*
+                fetch('your-backend-endpoint', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(formData)
+                })
+                .then(response => response.json())
+                .then(data => {
+                    formStatus.innerHTML = '<div class="status-message success"><i class="fas fa-check-circle"></i> Message sent successfully!</div>';
+                    contactForm.reset();
+                })
+                .catch(error => {
+                    formStatus.innerHTML = '<div class="status-message error"><i class="fas fa-exclamation-circle"></i> Something went wrong. Please try again.</div>';
+                });
+                */
+            });
+        }
+    });
+</script>
+
+</body>
+</html>

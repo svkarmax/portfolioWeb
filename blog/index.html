@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog | Shubham Vishwakarma</title>
+
+    <!-- SEO -->
+    <meta name="description" content="Blog posts by Shubham Vishwakarma - Software Engineer sharing insights on Java, Web Development, and Technology">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="../svg/favicon.svg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<!-- HEADER (same as index.html) -->
+<header class="navbar">
+    <div class="nav-container">
+        <div class="logo">
+            <a href="index.html" class="index.html">
+                <div class="logo-circular">
+                    <div class="initials">SV</div>
+                </div>
+            </a>
+        </div>
+
+        <nav class="nav-links">
+            <a href="../about/index.html">about</a>
+            <a href="../skills/index.html">skills</a>
+            <a href="../portfolio/index.html">portfolio</a>
+            <a href="../blog/index.html">blog</a>
+            <a href="../contact/index.html">contact</a>
+        </nav>
+
+        <div class="nav-social">
+            <a href="https://github.com/svkarmax" target="_blank" aria-label="GitHub">
+                <i class="fab fa-github"></i>
+            </a>
+            <a href="https://linkedin.com/in/svkarmax" target="_blank" aria-label="LinkedIn">
+                <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="https://twitter.com/yourusername" target="_blank" aria-label="Twitter">
+                <i class="fab fa-x-twitter"></i>
+            </a>
+            <a href="https://instagram.com/svkarmax" target="_blank" aria-label="Instagram">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+    </div>
+</header>
+
+<!-- BLOG PAGE CONTENT -->
+<main class="blog-page">
+    <div class="container">
+        <!-- Page Header -->
+        <div class="page-header">
+            <h1>My Blog</h1>
+            <div class="header-line"></div>
+            <p class="header-subtitle">Thoughts, tutorials, and insights about software development</p>
+        </div>
+
+        <!-- Blog Categories -->
+        <div class="blog-categories">
+            <button class="category-btn active" data-category="all">All Posts</button>
+            <button class="category-btn" data-category="java">Java</button>
+            <button class="category-btn" data-category="web">Web Dev</button>
+            <button class="category-btn" data-category="tutorial">Tutorials</button>
+            <button class="category-btn" data-category="career">Career</button>
+        </div>
+
+        <!-- Blog Posts Grid -->
+        <div class="blog-grid">
+            <!-- Blog Post 1 -->
+            <article class="blog-card" data-category="java">
+                <div class="blog-image">
+                    <img src="../images/blog-java.jpg" alt="Java Tips" onerror="this.src='data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22400%22%20height%3D%22250%22%20viewBox%3D%220%200%20400%20250%22%3E%3Crect%20width%3D%22400%22%20height%3D%22250%22%20fill%3D%22%23333%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20font-family%3D%22Arial%22%20font-size%3D%2220%22%20fill%3D%22%23fff%22%20text-anchor%3D%22middle%22%3EJava%3C%2Ftext%3E%3C%2Fsvg%3E'">
+                </div>
+                <div class="blog-content">
+                    <div class="blog-meta">
+                        <span class="blog-category">Java</span>
+                        <span class="blog-date"><i class="far fa-calendar"></i> Feb 15, 2026</span>
+                    </div>
+                    <h3 class="blog-title">10 Essential Java Tips for Beginners</h3>
+                    <p class="blog-excerpt">Learn the most important Java programming tips that every beginner should know to write better code...</p>
+                    <div class="blog-footer">
+                        <span class="blog-read-time"><i class="far fa-clock"></i> 5 min read</span>
+                        <a href="#" class="blog-read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Blog Post 2 -->
+            <article class="blog-card" data-category="web">
+                <div class="blog-image">
+                    <img src="../images/blog-css.jpg" alt="CSS Grid" onerror="this.src='data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22400%22%20height%3D%22250%22%20viewBox%3D%220%200%20400%20250%22%3E%3Crect%20width%3D%22400%22%20height%3D%22250%22%20fill%3D%22%23333%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20font-family%3D%22Arial%22%20font-size%3D%2220%22%20fill%3D%22%23fff%22%20text-anchor%3D%22middle%22%3ECSS%3C%2Ftext%3E%3C%2Fsvg%3E'">
+                </div>
+                <div class="blog-content">
+                    <div class="blog-meta">
+                        <span class="blog-category">Web Dev</span>
+                        <span class="blog-date"><i class="far fa-calendar"></i> Feb 10, 2026</span>
+                    </div>
+                    <h3 class="blog-title">Mastering CSS Grid: A Complete Guide</h3>
+                    <p class="blog-excerpt">Everything you need to know about CSS Grid layout to create complex, responsive designs with ease...</p>
+                    <div class="blog-footer">
+                        <span class="blog-read-time"><i class="far fa-clock"></i> 8 min read</span>
+                        <a href="#" class="blog-read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Blog Post 3 -->
+            <article class="blog-card" data-category="tutorial">
+                <div class="blog-image">
+                    <img src="../images/blog-spring.jpg" alt="Spring Boot" onerror="this.src='data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22400%22%20height%3D%22250%22%20viewBox%3D%220%200%20400%20250%22%3E%3Crect%20width%3D%22400%22%20height%3D%22250%22%20fill%3D%22%23333%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20font-family%3D%22Arial%22%20font-size%3D%2220%22%20fill%3D%22%23fff%22%20text-anchor%3D%22middle%22%3ESpring%20Boot%3C%2Ftext%3E%3C%2Fsvg%3E'">
+                </div>
+                <div class="blog-content">
+                    <div class="blog-meta">
+                        <span class="blog-category">Tutorial</span>
+                        <span class="blog-date"><i class="far fa-calendar"></i> Feb 5, 2026</span>
+                    </div>
+                    <h3 class="blog-title">Building REST APIs with Spring Boot</h3>
+                    <p class="blog-excerpt">Step-by-step tutorial on creating robust RESTful APIs using Spring Boot and best practices...</p>
+                    <div class="blog-footer">
+                        <span class="blog-read-time"><i class="far fa-clock"></i> 12 min read</span>
+                        <a href="#" class="blog-read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Blog Post 4 -->
+            <article class="blog-card" data-category="career">
+                <div class="blog-image">
+                    <img src="../images/blog-career.jpg" alt="Career Tips" onerror="this.src='data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22400%22%20height%3D%22250%22%20viewBox%3D%220%200%20400%20250%22%3E%3Crect%20width%3D%22400%22%20height%3D%22250%22%20fill%3D%22%23333%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20font-family%3D%22Arial%22%20font-size%3D%2220%22%20fill%3D%22%23fff%22%20text-anchor%3D%22middle%22%3ECareer%3C%2Ftext%3E%3C%2Fsvg%3E'">
+                </div>
+                <div class="blog-content">
+                    <div class="blog-meta">
+                        <span class="blog-category">Career</span>
+                        <span class="blog-date"><i class="far fa-calendar"></i> Jan 28, 2026</span>
+                    </div>
+                    <h3 class="blog-title">How to Land Your First Software Engineering Job</h3>
+                    <p class="blog-excerpt">Practical advice on resume building, interview preparation, and job searching for new developers...</p>
+                    <div class="blog-footer">
+                        <span class="blog-read-time"><i class="far fa-clock"></i> 7 min read</span>
+                        <a href="#" class="blog-read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Blog Post 5 -->
+            <article class="blog-card" data-category="java">
+                <div class="blog-image">
+                    <img src="../images/blog-multithreading.jpg" alt="Multithreading" onerror="this.src='data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22400%22%20height%3D%22250%22%20viewBox%3D%220%200%20400%20250%22%3E%3Crect%20width%3D%22400%22%20height%3D%22250%22%20fill%3D%22%23333%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20font-family%3D%22Arial%22%20font-size%3D%2220%22%20fill%3D%22%23fff%22%20text-anchor%3D%22middle%22%3EMultithreading%3C%2Ftext%3E%3C%2Fsvg%3E'">
+                </div>
+                <div class="blog-content">
+                    <div class="blog-meta">
+                        <span class="blog-category">Java</span>
+                        <span class="blog-date"><i class="far fa-calendar"></i> Jan 20, 2026</span>
+                    </div>
+                    <h3 class="blog-title">Understanding Multithreading in Java</h3>
+                    <p class="blog-excerpt">Deep dive into Java multithreading concepts, synchronization, and concurrent programming...</p>
+                    <div class="blog-footer">
+                        <span class="blog-read-time"><i class="far fa-clock"></i> 10 min read</span>
+                        <a href="#" class="blog-read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Blog Post 6 -->
+            <article class="blog-card" data-category="web">
+                <div class="blog-image">
+                    <img src="../images/blog-responsive.jpg" alt="Responsive Design" onerror="this.src='data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22400%22%20height%3D%22250%22%20viewBox%3D%220%200%20400%20250%22%3E%3Crect%20width%3D%22400%22%20height%3D%22250%22%20fill%3D%22%23333%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20font-family%3D%22Arial%22%20font-size%3D%2220%22%20fill%3D%22%23fff%22%20text-anchor%3D%22middle%22%3EResponsive%20Design%3C%2Ftext%3E%3C%2Fsvg%3E'">
+                </div>
+                <div class="blog-content">
+                    <div class="blog-meta">
+                        <span class="blog-category">Web Dev</span>
+                        <span class="blog-date"><i class="far fa-calendar"></i> Jan 15, 2026</span>
+                    </div>
+                    <h3 class="blog-title">Responsive Design Best Practices</h3>
+                    <p class="blog-excerpt">Learn how to create websites that look great on all devices with modern CSS techniques...</p>
+                    <div class="blog-footer">
+                        <span class="blog-read-time"><i class="far fa-clock"></i> 6 min read</span>
+                        <a href="#" class="blog-read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </article>
+        </div>
+
+        <!-- Pagination -->
+        <div class="pagination">
+            <button class="pagination-btn active">1</button>
+            <button class="pagination-btn">2</button>
+            <button class="pagination-btn">3</button>
+            <button class="pagination-btn next">Next <i class="fas fa-chevron-right"></i></button>
+        </div>
+    </div>
+</main>
+
+<!-- Scroll to Top Button -->
+<button id="scrollTopBtn" class="scroll-top-btn" aria-label="Scroll to top">
+    <i class="fas fa-chevron-up"></i>
+</button>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="footer-bottom">
+        <div class="footer-bottom-container">
+            <p>© 2026 Shubham Vishwakarma. All rights reserved.</p>
+            <a href="https://mail.google.com/mail/?view=cm&to=svkarmax@gmail.com"
+               target="_blank" class="footer-mail-link">
+                <i class="fas fa-envelope"></i>
+                svkarmax@gmail.com
+            </a>
+        </div>
+    </div>
+</footer>
+
+<!-- Scripts -->
+<script src="../js/projects.js"></script>
+<script src="../js/script.js"></script>
+<script>
+    // Blog category filter functionality
+    document.addEventListener('DOMContentLoaded', function() {
+        const categoryBtns = document.querySelectorAll('.category-btn');
+        const blogCards = document.querySelectorAll('.blog-card');
+
+        categoryBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active class from all buttons
+                categoryBtns.forEach(b => b.classList.remove('active'));
+                // Add active class to clicked button
+                btn.classList.add('active');
+
+                const category = btn.getAttribute('data-category');
+
+                // Filter blog posts
+                blogCards.forEach(card => {
+                    if (category === 'all' || card.getAttribute('data-category') === category) {
+                        card.style.display = 'block';
+                        setTimeout(() => {
+                            card.style.opacity = '1';
+                            card.style.transform = 'scale(1)';
+                        }, 50);
+                    } else {
+                        card.style.opacity = '0';
+                        card.style.transform = 'scale(0.8)';
+                        setTimeout(() => {
+                            card.style.display = 'none';
+                        }, 300);
+                    }
+                });
+            });
+        });
+    });
+</script>
+
+</body>
+</html>

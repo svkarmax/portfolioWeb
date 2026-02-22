@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shubham Vishwakarma | Software Engineer & Web Developer</title>
+
+    <!-- SEO -->
+    <meta name="description" content="Shubham Vishwakarma - Software Engineer
+    specializing in Java development and Windchill customization.">
+    <meta name="author" content="Shubham Vishwakarma">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="svg/favicon.svg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="navbar">
+    <div class="nav-container">
+
+        <!-- Logo -->
+        <div class="logo">
+            <a href="index.html" class="logo-link">
+                <div class="logo-circular">
+                    <div class="initials">SV</div>
+                </div>
+            </a>
+        </div>
+
+        <!-- Navigation Links -->
+        <nav class="nav-links">
+            <a href="about/index.html">about</a>
+            <a href="skills/index.html">skills</a>
+            <a href="portfolio/index.html">portfolio</a>
+            <a href="blog/index.html">blog</a>
+            <a href="contact/index.html">contact</a>
+        </nav>
+
+        <!-- Social Links & Theme Toggle -->
+        <div class="nav-social">
+            <a href="https://github.com/svkarmax" target="_blank" aria-label="GitHub">
+                <i class="fab fa-github"></i>
+            </a>
+            <a href="https://linkedin.com/in/svkarmax" target="_blank" aria-label="LinkedIn">
+                <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="https://twitter.com/yourusername" target="_blank" aria-label="Twitter">
+                <i class="fab fa-x-twitter"></i>
+            </a>
+            <a href="https://instagram.com/svkarmax" target="_blank" aria-label="Instagram">
+                <i class="fab fa-instagram"></i>
+            </a>
+
+            <!-- Theme Toggle Button -->
+            <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+
+    </div>
+</header>
+
+<!-- HERO SECTION -->
+<section class="hero">
+    <div class="hero-container">
+
+        <!-- Photo -->
+        <div class="hero-image">
+            <img src="images/profile.jpeg" alt="Shubham Vishwakarma">
+        </div>
+
+        <!-- Text Content -->
+        <div class="hero-content">
+            <h1>Hi, I'm <span class="highlight">Shubham Vishwakarma</span></h1>
+            <p class="subtitle">Software Engineer & Web Developer</p>
+            <p class="description">
+                I'm a Computer Science graduate specializing in Java development
+                and Windchill customization. I build clean, scalable software solutions.
+            </p>
+            <div class="hero-buttons">
+                <a href="contact/index.html" class="btn btn-primary">Get in Touch</a>
+                <a href="portfolio/index.html" class="btn btn-secondary">View Projects</a>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- WORK SECTION -->
+<section class="work-section" id="projects">
+    <div class="work-header">
+        <p class="work-label">SOME OF MY LATEST WORK</p>
+    </div>
+
+    <!-- Cards auto generated from projects.js -->
+    <div class="work-grid" id="featured-grid"></div>
+
+    <!-- View All -->
+    <div class="work-more">
+        <a href="portfolio/index.html" class="btn btn-secondary">
+            View All Projects <i class="fas fa-arrow-right"></i>
+        </a>
+    </div>
+</section>
+
+
+
+<!-- Scroll to Top Button -->
+<button id="scrollTopBtn" class="scroll-top-btn" aria-label="Scroll to top">
+    <i class="fas fa-chevron-up"></i>
+</button>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="footer-bottom">
+        <div class="footer-bottom-container">
+            <p>© 2026 Shubham Vishwakarma. All rights reserved.</p>
+            <a href="https://mail.google.com/mail/?view=cm&to=svkarmax@gmail.com"
+               target="_blank" class="footer-mail-link">
+                <i class="fas fa-envelope"></i>
+                svkarmax@gmail.com
+            </a>
+        </div>
+    </div>
+</footer>
+
+<!-- Load projects data FIRST then script -->
+<script src="js/projects.js"></script>
+<script src="js/script.js"></script>
+
+</body>
+</html>
