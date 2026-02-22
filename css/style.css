@@ -2397,13 +2397,12 @@ section p {
         gap: 12px;
     }
 
-    /* Hide social icons on mobile, keep only theme toggle */
-    .nav-social a {
-        display: none;
-    }
-
     .nav-container {
         flex-direction: row;
         position: relative;
     }
+        /* Hide social icons on mobile, keep only theme toggle */
+        .nav-social a {
+            display: none;
+        }
 }
