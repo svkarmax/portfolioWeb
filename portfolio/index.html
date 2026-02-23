@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio | Shubham Vishwakarma</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="../css/style.css">
@@ -24,11 +25,13 @@
             <a href="../blog/index.html">blog</a>
             <a href="../contact/index.html">contact</a>
         </nav>
+
         <button class="hamburger" id="hamburger" aria-label="Menu">
             <span></span>
             <span></span>
             <span></span>
         </button>
+
         <div class="nav-social">
             <a href="https://github.com/svkarmax" target="_blank"><i class="fab fa-github"></i></a>
             <a href="https://linkedin.com/in/svkarmax" target="_blank"><i class="fab fa-linkedin-in"></i></a>
@@ -109,7 +112,7 @@
                                 <p>${project.category}</p>
                                 <div class="overlay-links">
                                     ${project.link !== '#' ? `<a href="${project.link}" target="_blank" class="overlay-link"><i class="fas fa-external-link-alt"></i></a>` : ''}
-                                    ${project.github !== '#' ? `<a href="${project.github}" target="_blank" class="overlay-link"><i class="fab fa-github"></i></a>` : ''}
+                                    ${project.github !== '#' ? `<a href="${project.gitHub}" target="_blank" class="overlay-link"><i class="fab fa-github"></i></a>` : ''}
                                 </div>
                             </div>
                         </div>
@@ -138,6 +141,5 @@
         });
     });
 </script>
-
 </body>
 </html>

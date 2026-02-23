@@ -52,7 +52,6 @@ if (themeToggle) {
 
 // ====================================
 // HAMBURGER MENU
-// — runs immediately, no DOMContentLoaded needed
 // ====================================
 function setupHamburger() {
   const hamburger = document.getElementById('hamburger');
@@ -71,6 +70,9 @@ function setupHamburger() {
     });
   });
 }
+
+// Run immediately — script loads at bottom of body so DOM is ready
+setupHamburger();
 
 // ====================================
 // NAVIGATION
@@ -183,7 +185,7 @@ if (scrollTopBtn) {
 // INITIALIZE
 // ====================================
 document.addEventListener('DOMContentLoaded', function () {
-  // Featured cards on home page
+  // Featured cards on home page only
   const featuredGrid = document.getElementById('featured-grid');
   if (featuredGrid && typeof projects !== 'undefined') {
     const featured = projects.filter(p => p.featured).slice(0, 3);
@@ -193,7 +195,6 @@ document.addEventListener('DOMContentLoaded', function () {
   highlightActiveLink();
   setupNavigation();
   setupLogoClick();
-  setupHamburger();       // ← called here reliably
   handleAnchorOnLoad();
   setupScrollHighlight();
 });
